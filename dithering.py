@@ -1,4 +1,3 @@
-import string
 from PIL import Image, ImageOps
 import sys
 
