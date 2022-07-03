@@ -1,7 +1,7 @@
 from PIL import Image, ImageOps
 import sys
 
-def diffusion_error_dithering(img_path, threshold):
+def error_dithering(img_path, threshold, sav):
     try:
         img = Image.open(img_path)
         img = ImageOps.grayscale(img)
@@ -18,16 +18,19 @@ def diffusion_error_dithering(img_path, threshold):
             if pixels[x, y] < threshold:
                 new_pixel = 0
                 error = pixels[x,y]
-                pixels[x, y] = new_pixel 
+                pixels[x, y] = new_pixel
             else:
                 new_pixel = 255
                 error = pixels[x,y]-255
                 pixels[x,y] = new_pixel
-    img.show()
+    
+    if sav == True:
+        img.save("2.png", "png")
+        img.show()
+    else:
+        img.show()
 
 
 if __name__ == "__main__":
-    path_og = "./img/a.png"
-    a = diffusion_error_dithering(path_og, 128)
-
-#img.save("2.png", "png")
+    path_og = "1a.jpg"
+    a = error_dithering(path_og, 128, True)
