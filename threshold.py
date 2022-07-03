@@ -2,7 +2,7 @@ from PIL import Image, ImageOps
 import sys
 
 try:
-    img = Image.open("./img/a.png")
+    img = Image.open("./img/1.jpg")
     img = ImageOps.grayscale(img)
 
 except:
@@ -21,4 +21,4 @@ for x in range(0,ancho):
             new_pixel = 255
             pixels[x,y] = new_pixel
 img.show()
-#img.save("2.png", "png")
+img.save("2.png", "png")
